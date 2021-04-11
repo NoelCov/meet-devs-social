@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "493868318614",
+    "project_id": "social-devs-a8a50",
+    "storage_bucket": "social-devs-a8a50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493868318614:android:8284e6979412b2851ba7b7",
+        "android_client_info": {
+          "package_name": "no3lcodes.social_dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493868318614-6g9k9l16b1j07jd7gq6o2s3tvehqgf6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhQedgMCFmVrnnKAHKzc-QnjEUPYJK2T8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493868318614-6g9k9l16b1j07jd7gq6o2s3tvehqgf6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
