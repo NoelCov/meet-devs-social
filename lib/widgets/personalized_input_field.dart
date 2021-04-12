@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PersonalizedInputField extends StatelessWidget {
-  PersonalizedInputField({this.hideText = false, this.hintText, this.keyboardtype});
+  PersonalizedInputField({this.hideText = false, this.hintText, this.keyboardtype, @required this.onChange});
 
   final bool hideText;
   final String hintText;
   final TextInputType keyboardtype;
+  final Function onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class PersonalizedInputField extends StatelessWidget {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
       margin: EdgeInsets.symmetric(horizontal: 60),
       child: TextField(
+        onChanged: onChange,
         keyboardType: keyboardtype,
         obscureText: hideText,
         decoration: InputDecoration(
