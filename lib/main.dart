@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:social_dev/screens/home_screen.dart';
 import 'package:social_dev/screens/login_screen.dart';
+import 'package:social_dev/screens/profile_screen.dart';
 import 'package:social_dev/screens/register_screen.dart';
 
 Future<void> main() async {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
+        '/profile': (context) => ProfileScreen(),
       },
     );
   }

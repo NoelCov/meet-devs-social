@@ -59,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             email: email, password: password);
                         if (user != null) {
                           print('Logged in!');
+                          Navigator.pushNamed(context, '/profile');
                         }
                       } catch (e) {
                         print(e);
