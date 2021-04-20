@@ -2,35 +2,50 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BioContainer extends StatelessWidget {
-  //TODO Make it so user has to type a name and a bio!
+  BioContainer({this.name = 'Your Name', this.title = 'Your title', this.bio = 'Your bio'});
+
+  final String name;
+  final String title;
+  final String bio;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
+      margin: EdgeInsets.only(bottom: 15),
       child: Column(
         children: [
           Text(
-            'Noel Covarrubias',
+            '$name',
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 25,
+            ),
+          ),
+          SizedBox(height: 5),
+          Text(
+            '$title',
+            style: TextStyle(
+              fontSize: 15,
             ),
           ),
           SizedBox(height: 10),
-          Text(
-            'Mobile Developer',
-            style: TextStyle(
-              fontSize: 20,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 25),
+            child: Text(
+              '$bio',
+              style: TextStyle(
+                fontSize: 12
+              ),
+              textAlign: TextAlign.center,
             ),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.circle),
-              Icon(Icons.clear),
-            ],
           )
+          //TODO Maybe add this back
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Icon(Icons.circle, size: 15),
+          //     Icon(Icons.clear, size: 15),
+          //   ],
+          // )
         ],
       ),
     );

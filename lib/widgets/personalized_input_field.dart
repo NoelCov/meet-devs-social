@@ -11,7 +11,7 @@ class PersonalizedInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
       margin: EdgeInsets.symmetric(horizontal: 60),
       child: TextField(
         onChanged: onChange,

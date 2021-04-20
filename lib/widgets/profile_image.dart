@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
+const defaultImage = AssetImage('images/final.jpg');
+
 class ProfileImage extends StatelessWidget {
-  //TODO Modify widget to have default image. Unless users adds image
+  ProfileImage({
+    this.image = defaultImage,
+  });
+
+  final ImageProvider<Object> image;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      margin: EdgeInsets.only(left: 80, right: 80, top: 60, bottom: 20),
+      height: 130,
+      width: 130,
+      margin: EdgeInsets.only(top: 10, bottom: 10),
       decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(100),
         color: Colors.white,
         image: DecorationImage(
-          image: AssetImage('images/profile.jpg'),
+          image: image,
           fit: BoxFit.fill,
         ),
         shape: BoxShape.circle,

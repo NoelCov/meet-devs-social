@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PostContainer extends StatelessWidget {
-  //TODO Modify the container and make it so that it takes the text parameter
+  PostContainer({@required this.post});
+
+  final String post;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +18,7 @@ class PostContainer extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          'Today I worked on my app if anyone wants to help me that\'d be nice',
+          '$post',
           style: TextStyle(
             letterSpacing: 0.5,
           ),
