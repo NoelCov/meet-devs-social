@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class PostContainer extends StatelessWidget {
   PostContainer({@required this.post});
-
   final String post;
 
   @override

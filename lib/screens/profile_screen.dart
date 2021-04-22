@@ -4,19 +4,16 @@ import 'package:social_dev/widgets/profile_image.dart';
 import 'package:social_dev/widgets/bio_container.dart';
 import 'package:social_dev/widgets/post_container.dart';
 import 'package:social_dev/widgets/bottom_navbar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:social_dev/widgets/addPostFAB.dart';
+import 'package:social_dev/db_helper.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final _auth = FirebaseAuth.instance;
+  final DbHelper db = DbHelper();
 
   @override
   Widget build(BuildContext context) {
     String postText;
-    Stream documentStream = FirebaseFirestore.instance
-        .collection('users')
-        .doc(_auth.currentUser.uid)
-        .snapshots();
+    Stream documentStream = db.createUsersStream();
 
     return StreamBuilder<DocumentSnapshot>(
         stream: documentStream,
@@ -31,9 +28,11 @@ class ProfileScreen extends StatelessWidget {
             List<PostContainer> postContainers = [];
 
             for (var post in posts) {
-              postContainers.add(PostContainer(
-                post: post.toString(),
-              ));
+              postContainers.add(
+                PostContainer(
+                  post: post.toString(),
+                ),
+              );
             }
 
             return Scaffold(

@@ -3,6 +3,7 @@ import 'package:social_dev/widgets/personalized_button.dart';
 import 'package:social_dev/widgets/personalized_input_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:social_dev/db_helper.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _auth = FirebaseAuth.instance;
+  final DbHelper db = DbHelper();
   String email;
   String password;
   bool loading = false;
@@ -56,15 +57,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             loading = true;
                           });
 
-                          try {
-                            final user = await _auth.signInWithEmailAndPassword(
-                                email: email, password: password);
-                            if (user != null) {
-                              print('Logged in!');
-                              Navigator.pushNamed(context, '/profile');
-                            }
-                          } catch (e) {
-                            print(e);
+                          final user = await db.loginUser(email, password);
+                          if (user != null) {
+                            Navigator.pushNamed(context, '/profile');
                           }
 
                           setState(() {

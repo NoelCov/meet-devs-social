@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:social_dev/widgets/bottom_navbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:social_dev/widgets/find_dev_container.dart';
+import 'package:social_dev/db_helper.dart';
 
 class FindDevs extends StatefulWidget {
   @override
@@ -10,35 +11,22 @@ class FindDevs extends StatefulWidget {
 }
 
 class _FindDevsState extends State<FindDevs> {
+  final DbHelper db = DbHelper();
   final _controller = TextEditingController();
-  List devsFound = [];
-  List devsFoundIds = [];
+  CollectionReference users = DbHelper().collectionReference;
+  List<dynamic> data = [];
+  int itemCount = 0;
 
-  final CollectionReference users =
-      FirebaseFirestore.instance.collection('users');
-
-  Future<void> getData(name) async {
-    final Query query = users.where('name', isEqualTo: '$name');
-    // Get docs from collection reference
-    QuerySnapshot querySnapshot = await query.get();
-
-    final myData = querySnapshot.docs;
-
-    // Get data from docs and convert map to List
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-
-    devsFound.clear();
+  void getData(String name) async {
+    final result = await db.findDevelopers(name);
     setState(() {
-      for (var i = 0; i < allData.length; i++) {
-        devsFoundIds.add(myData[i].id);
-        devsFound.add(allData[i]);
-      }
+      data = result;
+      itemCount = data[0].length;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print(devsFoundIds);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -62,7 +50,8 @@ class _FindDevsState extends State<FindDevs> {
                   _controller.clear();
                   FocusScope.of(context).unfocus();
                   setState(() {
-                    devsFound.clear();
+                    data.clear();
+                    itemCount = 0;
                   });
                 },
                 child: Text(
@@ -77,11 +66,11 @@ class _FindDevsState extends State<FindDevs> {
       body: ListView.builder(
           itemBuilder: (context, index) {
             return FindDevContainer(
-                devName: devsFound[index]['name'].toString(),
-                data: devsFound[index],
-                foundUserId: devsFoundIds[index]);
+              devId: data[0][index],
+              data: data[1][index],
+            );
           },
-          itemCount: devsFound.length),
+          itemCount: itemCount),
       bottomNavigationBar: BottomNavBar(),
     );
   }

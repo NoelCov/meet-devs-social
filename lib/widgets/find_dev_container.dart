@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:social_dev/screens/view_profile.dart';
 
 class FindDevContainer extends StatelessWidget {
-  FindDevContainer({this.devName, this.data, this.foundUserId});
+  FindDevContainer({@required this.data, @required this.devId});
 
-  final String devName;
   final data;
-  final foundUserId;
+  final devId;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class FindDevContainer extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ViewProfile(data: data, foundDevId: foundUserId),
+            builder: (context) => ViewProfile(data: data, foundDevId: devId),
           ),
         );
       },
@@ -38,7 +37,7 @@ class FindDevContainer extends StatelessWidget {
             ),
             SizedBox(width: 10),
             Text(
-              '$devName',
+              '${data['name']}',
               style: TextStyle(fontSize: 18, letterSpacing: 0.5),
             ),
           ],

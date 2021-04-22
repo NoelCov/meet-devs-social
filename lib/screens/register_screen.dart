@@ -49,26 +49,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hideText: true,
                     hintText: 'Enter your password'),
                 SizedBox(height: 15),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 50),
-                  child: PersonalizedButton(
-                      width: 290,
-                      buttonText: 'Create account',
-                      onTap: () async {
-                        setState(() {
-                          loading = true;
-                        });
+                PersonalizedButton(
+                    width: 295,
+                    buttonText: 'Create account',
+                    onTap: () async {
+                      setState(() {
+                        loading = true;
+                      });
 
-                        bool response = await db.registerUser(email, password);
+                      final user = await db.registerUser(email, password);
 
-                        if (response) {
-                          setState(() {
-                            loading = false;
-                          });
-                          Navigator.pushNamed(context, '/profile');
-                        }
-                      }),
-                ),
+                      if (user != null) {
+                        Navigator.pushNamed(context, '/profile');
+                      }
+
+                      setState(() {
+                        loading = false;
+                      });
+                    }),
               ],
             ),
           ),
