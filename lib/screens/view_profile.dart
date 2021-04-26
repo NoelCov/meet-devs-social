@@ -14,11 +14,19 @@ class ViewProfile extends StatefulWidget {
 }
 
 class _ViewProfileState extends State<ViewProfile> {
-  String follow = 'Follow';
+  String follow;
   final DbHelper db = DbHelper();
+
+  void setFollow() async {
+    final response = await db.checkFollowing(widget.data['email']);
+    setState(() {
+      follow = response ? 'Following' : 'Follow';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    setFollow();
     return Scaffold(
       body: Center(
         child: Column(

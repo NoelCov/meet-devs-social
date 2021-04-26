@@ -87,19 +87,22 @@ class DbHelper {
     });
   }
 
-  bool checkFollowing(foundUserEmail) {
-    final usersFollowing = _auth.currentUser.uid;
-    for (var user in usersFollowing){
-      if (user == foundUserEmail){
-        return true;
-      } else {
-        return false;
-      }
-    }
+  Future<bool> checkFollowing(foundUserEmail) async {
+    bool response = false;
 
-    //TODO Finish this
-    // This function will check if the user looking at the profile
-    // is already following it. If so it returns true, if not then it returns false
-    // so that the button can be responsive.
+    await users
+        .doc(_auth.currentUser.uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        final usersFollowed = documentSnapshot.data()['following'];
+        for (var email in usersFollowed) {
+          if (email == foundUserEmail) {
+            response = true;
+          }
+        }
+      }
+    });
+    return response;
   }
 }
