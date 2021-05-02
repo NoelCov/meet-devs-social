@@ -1,5 +1,10 @@
 # social_dev
 
-A new android and iOS app created with flutter.
+A social media app for developers. You can find fellow developers. Follow each other and talk about projects to work on together or just meet new people through this app. 
+This app is part of my portfolio. 
+Here below are some screenshots.
 
-This app will be used like a small social media app where you can create a profile that tells a little bit about you and your interests to other people, then you can look for other developers and become friends with them. Once you are friends on the app the two of you can share ideas, stories and you could start working together. So yes, this app is designed just for developers.
+![image](https://user-images.githubusercontent.com/73734505/116806470-0f3e3d00-aae2-11eb-9baa-54ad0a8c0780.png)
+![image](https://user-images.githubusercontent.com/73734505/116806475-16fde180-aae2-11eb-8444-2106f0fcc85d.png)
+![image](https://user-images.githubusercontent.com/73734505/116806489-27ae5780-aae2-11eb-8ce6-bb30244c45b4.png)
+![image](https://user-images.githubusercontent.com/73734505/116806497-3563dd00-aae2-11eb-9804-d36b5cedb9ac.png)
