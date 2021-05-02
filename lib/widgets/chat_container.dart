@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChatContainer extends StatelessWidget {
-  ChatContainer({@required this.text, @required this.senderName});
+  ChatContainer({this.text = '', @required this.senderName});
 
   final String text;
   final String senderName;
@@ -13,8 +13,7 @@ class ChatContainer extends StatelessWidget {
         Navigator.pushNamed(context, '/chat_screen');
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-        height: 80,
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Row(
           children: [
             Container(
@@ -39,10 +38,10 @@ class ChatContainer extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 5),
-                    child: Text(
+                    child: text.isNotEmpty ? Text(
                       '$text',
                       maxLines: 2,
-                    ),
+                    ) : null,
                   ),
                 ],
               ),

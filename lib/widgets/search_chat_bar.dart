@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:social_dev/data_helper.dart';
 
 class SearchChatBar extends StatelessWidget {
+  SearchChatBar({this.hintText = 'Search', this.onSubmit});
+  
+  final dataFuncs = DataFunctions();
+  final _controller = TextEditingController();
+  final String hintText;
+  final Function onSubmit;
 
   @override
   Widget build(BuildContext context) {
@@ -8,6 +15,15 @@ class SearchChatBar extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20),
       height: 40,
       child: TextField(
+        onSubmitted: (user) async {
+          onSubmit();
+          final users = await dataFuncs.getUsers(user);
+          _controller.clear();
+          //TODO now implement futureBuilder with this data
+          print(users);
+        },
+        textInputAction: TextInputAction.go,
+        controller: _controller,
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
@@ -19,7 +35,7 @@ class SearchChatBar extends StatelessWidget {
           ),
           filled: true,
           fillColor: Colors.white70,
-          hintText: 'Search',
+          hintText: '$hintText',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
           ),

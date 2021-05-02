@@ -13,7 +13,7 @@ class BottomNavBar extends StatelessWidget {
           Navigator.pushNamed(context, '/find_devs');
         }
         if (index == 2) {
-          Navigator.pushNamed(context, '/messages_screen');
+          Navigator.pushNamed(context, '/conversations_screen');
         }
       },
       items: [

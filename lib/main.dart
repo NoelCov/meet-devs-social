@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:social_dev/screens/messages_screen.dart';
+import 'package:social_dev/screens/conversations_screen.dart';
 import 'package:social_dev/screens/edit_profile.dart';
 import 'package:social_dev/screens/find_devs.dart';
 import 'package:social_dev/screens/home_screen.dart';
@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
         '/edit_profile': (context) => EditProfile(),
         '/find_devs': (context) => FindDevs(),
         '/view_profile': (context) => ViewProfile(),
-        '/messages_screen': (context) => MessagesScreen(),
-        '/chat_screen': (context) => ChatScreen(),
+        '/conversations_screen': (context) => ConversationsScreen(),
+        '/chat_screen': (context) => ConversationsScreen(),
       },
     );
   }

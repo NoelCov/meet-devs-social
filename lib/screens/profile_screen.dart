@@ -35,45 +35,47 @@ class ProfileScreen extends StatelessWidget {
               );
             }
 
-            return Scaffold(
-              resizeToAvoidBottomInset: true,
-              floatingActionButton: addPostFAB(context, postText),
-              appBar: AppBar(
-                toolbarHeight: 40,
-                actions: [
-                  IconButton(
-                    icon: Icon(Icons.settings),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/edit_profile');
-                    },
-                  )
-                ],
-                automaticallyImplyLeading: false,
-              ),
-              body: Column(
-                children: [
-                  ProfileImage(
-                    image: AssetImage('images/profile.jpg'),
-                  ),
-                  BioContainer(
-                    name: '${data['name']}',
-                    title: '${data['title']}',
-                    bio: '${data['bio']}',
-                  ),
-                  Divider(
-                    thickness: 1,
-                    height: 5,
-                    color: Colors.black12,
-                  ),
-                  SizedBox(height: 10),
-                  Expanded(
-                    child: ListView(
-                      children: postContainers,
+            return SafeArea(
+              child: Scaffold(
+                resizeToAvoidBottomInset: true,
+                floatingActionButton: addPostFAB(context, postText),
+                appBar: AppBar(
+                  toolbarHeight: 40,
+                  actions: [
+                    IconButton(
+                      icon: Icon(Icons.settings),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/edit_profile');
+                      },
+                    )
+                  ],
+                  automaticallyImplyLeading: false,
+                ),
+                body: Column(
+                  children: [
+                    ProfileImage(
+                      image: AssetImage('images/profile.jpg'),
                     ),
-                  ),
-                ],
+                    BioContainer(
+                      name: '${data['name']}',
+                      title: '${data['title']}',
+                      bio: '${data['bio']}',
+                    ),
+                    Divider(
+                      thickness: 1,
+                      height: 5,
+                      color: Colors.black12,
+                    ),
+                    SizedBox(height: 10),
+                    Expanded(
+                      child: ListView(
+                        children: postContainers,
+                      ),
+                    ),
+                  ],
+                ),
+                bottomNavigationBar: BottomNavBar(),
               ),
-              bottomNavigationBar: BottomNavBar(),
             );
           }
 
